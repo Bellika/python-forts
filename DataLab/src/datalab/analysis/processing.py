@@ -9,9 +9,10 @@ Demonstrates:
 """
 
 from datalab import config
-from datalab.module_io import load_json, load_csv
-from datalab.statistics import calculate_average, count_by_field, get_min_max
-from datalab.utils import log, format_number
+from datalab.io.module_io import load_json, load_csv
+from datalab.analysis.statistics import calculate_average, count_by_field, get_min_max
+from datalab.utils import log
+from datalab.utils.formatting import format_number
 
 
 def analyze_json_data(filename=None):
@@ -74,23 +75,3 @@ def analyze_csv_data(filename=None):
     }
 
 
-def print_analysis_report(analysis):
-    """
-    Print a formatted analysis report.
-
-    Args:
-        analysis: Dictionary with analysis results
-    """
-    log(f"Analysis of {analysis['file']}")
-    log(f"Total records: {analysis['records']}")
-    log(f"Average age: {format_number(analysis['average_age'])}")
-
-    if 'average_salary' in analysis:
-        log(f"Average salary: {format_number(analysis['average_salary'], 0)} SEK")
-        min_sal, max_sal = analysis['salary_range']
-        log(f"Salary range: {format_number(min_sal, 0)} - {format_number(max_sal, 0)} SEK")
-
-    if 'city_distribution' in analysis:
-        log("City distribution:")
-        for city, count in analysis['city_distribution'].items():
-            log(f"  {city}: {count}")

@@ -5,9 +5,10 @@ Demonstrates:
 - Working with list of dictionaries (common Python data structure)
 - Type conversion and data validation
 - Reusable statistical functions
+- Using collections.Counter from standard library
 """
 
-from datalab.utils import format_number
+from collections import Counter
 
 
 def calculate_average(data, field):
@@ -62,6 +63,10 @@ def count_by_field(data, field):
     """
     Count occurrences of each unique value in a field.
 
+    Demonstrates:
+    - Using collections.Counter from standard library
+    - More elegant than manual counting with dict
+
     Args:
         data: List of dictionaries
         field: Field name to count
@@ -69,11 +74,13 @@ def count_by_field(data, field):
     Returns:
         Dictionary mapping values to counts
     """
-    counts = {}
-    for record in data:
-        value = record.get(field)
-        counts[value] = counts.get(value, 0) + 1
-    return counts
+    # Extract values from field
+    values = [record.get(field) for record in data]
+
+    # Counter makes counting easy!
+    # Old way: counts = {}; for v in values: counts[v] = counts.get(v, 0) + 1
+    # New way: use Counter!
+    return dict(Counter(values))
 
 
 def get_min_max(data, field):
