@@ -1,0 +1,72 @@
+Pythonprojekt – G
+
+Uppgift
+Bygg ett valfritt Pythonprojekt (verktyg, script, spel, analys, etc.) med fokus på tydlig projektstruktur, versionshantering och isolerad miljö.
+DEADLINE: 9/1 23:59
+
+Krav
+1. Projektstruktur
+Minst 2 paket (mappar med __init__.py)
+
+
+Minst 5 moduler totalt
+
+
+
+2. Funktionella krav
+Programmet ska göra minst 3 olika saker (t.ex. läsa data, bearbeta data, skriva ut resultat)
+
+
+Koden ska använda minst 1 klass och minst 1 funktion i en separat modul
+Config-fil som hanterar pathing
+Custom logger med funktioner för att hantera olika nivåer av logs
+Säker hantering av input från användare (om input existerar). 
+
+3. Dokumentation
+README med:
+
+
+Kort beskrivning av projektet
+
+
+Hur man installerar projektet
+
+
+Hur man kör projektet
+
+
+
+4. Versionshantering
+Projektet ska använda Git
+
+
+Branching för features
+
+
+Projektet ska lämnas in med länk till PUBLIC GitHub-repo 
+
+
+
+5. Miljö och beroenden
+Projektet ska använda virtuell miljö (venv)
+
+
+Alla beroenden ska listas i requirements.txt eller pyproject.tom
+
+
+
+Godkänt uppnås när:
+Projektet är körbart
+
+
+Kravspecifikationen är inlämnad och följd
+
+
+Projektstrukturen följer paket-/modulkraven
+
+
+README och dependencies-fil finns
+
+
+Git används
+
