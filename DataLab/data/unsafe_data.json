@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Alice",
+        "age": 25,
+        "comment": "Normal user"
+    },
+    {
+        "name": "<script>alert('XSS Attack!')</script>",
+        "age": 30,
+        "comment": "XSS attempt in name field"
+    },
+    {
+        "name": "Bob'; DROP TABLE users; --",
+        "age": 22,
+        "comment": "SQL injection attempt (would be dangerous with database)"
+    },
+    {
+        "name": "Charlie",
+        "age": 28,
+        "comment": "<img src=x onerror='alert(\"XSS\")'>",
+        "malicious_field": "Payload in comment"
+    },
+    {
+        "name": "../../../etc/passwd",
+        "age": 35,
+        "comment": "Path traversal attempt"
+    },
+    {
+        "name": "Eve",
+        "age": 27,
+        "command": "ls -la",
+        "comment": "Command injection attempt"
+    }
+]
