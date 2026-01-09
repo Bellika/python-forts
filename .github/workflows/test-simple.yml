@@ -1,0 +1,44 @@
+name: Simple Test Workflow
+
+# This is a simplified CI workflow for teaching purposes
+# It demonstrates the basic structure of a GitHub Actions workflow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # A single job that runs tests
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Get the code
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # Step 2: Set up Python environment
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    # Step 3: Install dependencies
+    - name: Install dependencies
+      run: |
+        cd DataLab
+        pip install -r requirements.txt
+
+    # Step 4: Run the tests
+    - name: Run pytest
+      run: |
+        cd DataLab
+        pytest tests/ -v
+
+    # Step 5: Success message
+    - name: Tests completed
+      if: success()
+      run: echo "All tests passed successfully!"
