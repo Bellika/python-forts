@@ -57,6 +57,50 @@ DataLab/                      # PROJECT ROOT
             └── people.csv
 ```
 
+## Running Tests
+
+DataLab includes a comprehensive test suite. To run tests:
+
+### Quick start (all platforms)
+```bash
+# From the DataLab directory
+pytest
+
+# Run with coverage report
+pytest --cov=datalab
+
+# Run specific test file
+pytest tests/test_io.py -v
+```
+
+### Using the test script (Linux/Mac)
+```bash
+# Run all tests
+./run_tests.sh
+
+# Quick run (no coverage, skip slow tests)
+./run_tests.sh quick
+
+# Run specific file
+./run_tests.sh file test_io.py
+```
+
+### Troubleshooting
+If you get `ModuleNotFoundError: No module named 'datalab'`:
+- Make sure you're in the `DataLab` directory
+- The `pytest.ini` file should automatically add `src/` to the Python path
+- If problems persist, manually set PYTHONPATH:
+  ```bash
+  # Linux/Mac
+  export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"
+
+  # Windows (PowerShell)
+  $env:PYTHONPATH="$pwd\src"
+
+  # Windows (CMD)
+  set PYTHONPATH=%CD%\src
+  ```
+
 ## Key Concepts Demonstrated
 
 - **Absolute imports**: All imports use full package paths
