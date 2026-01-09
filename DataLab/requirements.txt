@@ -36,7 +36,6 @@ coverage==7.13.1
 cryptography==3.4.8
 cupshelpers==1.0
 cycler==0.10.0
--e git+ssh://git@github.com/Bellika/python-forts.git@1ee4d76ec9a8346146bc273d18fdab5ef51a5dec#egg=datalab
 dbus-python==1.2.18
 decorator==4.4.2
 defer==1.0.6

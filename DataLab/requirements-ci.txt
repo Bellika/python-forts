@@ -1,0 +1,20 @@
+# CI/CD Dependencies for DataLab
+# Minimal set of dependencies needed for testing and development
+
+# Testing
+pytest==9.0.2
+pytest-cov==7.0.0
+pytest-mock==3.15.1
+coverage==7.13.1
+
+# Code Quality
+flake8==7.0.0
+black==25.12.0
+isort==7.0.0
+
+# Optional data science libraries (currently not used but mentioned in CLAUDE.md)
+# Uncomment when needed:
+# pandas>=2.0.0
+# numpy>=1.24.0
+# matplotlib>=3.7.0
+# seaborn>=0.13.0

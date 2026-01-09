@@ -40,6 +40,7 @@ Thumbs.db
 reports/
 *.txt
 !requirements.txt
+!requirements-ci.txt
 
 # Temporary files
 *.bak
