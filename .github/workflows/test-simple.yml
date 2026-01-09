@@ -30,7 +30,7 @@ jobs:
     - name: Install dependencies
       run: |
         cd DataLab
-        pip install -r requirements.txt
+        pip install -r requirements-ci.txt
 
     # Step 4: Run the tests
     - name: Run pytest

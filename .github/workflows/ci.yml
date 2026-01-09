@@ -125,7 +125,7 @@ jobs:
     - name: Check for security vulnerabilities with Safety
       run: |
         cd DataLab
-        safety check --file requirements.txt --continue-on-error
+        safety check --file requirements-ci.txt --continue-on-error
 
     - name: Run Bandit security linter
       run: |
