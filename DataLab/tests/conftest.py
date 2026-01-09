@@ -63,7 +63,7 @@ def sample_json_file(temp_dir):
     ]
 
     file_path = temp_dir / "test_data.json"
-    with open(file_path, 'w') as f:
+    with open(file_path, 'w', encoding='utf-8') as f:
         json.dump(data, f)
 
     return file_path
@@ -84,7 +84,7 @@ def sample_csv_file(temp_dir):
     ]
 
     file_path = temp_dir / "test_data.csv"
-    with open(file_path, 'w', newline='') as f:
+    with open(file_path, 'w', encoding='utf-8', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=["name", "age", "city"])
         writer.writeheader()
         writer.writerows(data)

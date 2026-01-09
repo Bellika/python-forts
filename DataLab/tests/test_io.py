@@ -101,7 +101,7 @@ def test_save_json_pretty_formatting(temp_dir):
     save_json(data, file_path)
 
     # Read raw content
-    with open(file_path, 'r') as f:
+    with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
     # Should be indented (pretty-printed)
@@ -171,7 +171,7 @@ def test_save_csv_with_custom_fieldnames(temp_dir):
     save_csv(data, file_path, fieldnames=["age", "name", "city"])
 
     # Read back and verify column order
-    with open(file_path, 'r') as f:
+    with open(file_path, 'r', encoding='utf-8') as f:
         first_line = f.readline().strip()
         assert first_line == "age,name,city"
 
@@ -199,7 +199,7 @@ def test_load_json_invalid_json(temp_dir):
     file_path = temp_dir / "invalid.json"
 
     # Create file with invalid JSON
-    with open(file_path, 'w') as f:
+    with open(file_path, 'w', encoding='utf-8') as f:
         f.write("{ invalid json }")
 
     with pytest.raises(json.JSONDecodeError):
@@ -283,7 +283,7 @@ def test_csv_with_missing_optional_fields(temp_dir):
     import csv
     file_path = temp_dir / "sparse.csv"
 
-    with open(file_path, 'w', newline='') as f:
+    with open(file_path, 'w', encoding='utf-8', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=["name", "age", "city"])
         writer.writeheader()
         writer.writerow({"name": "Alice", "age": "30", "city": "Stockholm"})
