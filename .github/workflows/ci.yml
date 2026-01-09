@@ -90,6 +90,7 @@ jobs:
     - name: Run tests with pytest
       run: |
         cd DataLab
+        export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"
         pytest tests/ -v --cov=src/datalab --cov-report=xml --cov-report=term
 
     - name: Upload coverage to Codecov
