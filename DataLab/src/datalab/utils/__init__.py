@@ -7,20 +7,21 @@ Instead of one large utils.py, we split into:
 - formatting.py: Number and text formatting utilities
 """
 
+from datalab.utils.formatting import format_currency, format_number, format_percentage
+
 # Import from submodules to maintain backward compatibility
-from datalab.utils.logger import log, debug, info, warning, error
-from datalab.utils.formatting import format_number, format_currency, format_percentage
+from datalab.utils.logger import debug, error, info, log, warning
 
 # Export public API
 __all__ = [
     # Logging
-    'log',
-    'debug',
-    'info',
-    'warning',
-    'error',
+    "log",
+    "debug",
+    "info",
+    "warning",
+    "error",
     # Formatting
-    'format_number',
-    'format_currency',
-    'format_percentage',
+    "format_number",
+    "format_currency",
+    "format_percentage",
 ]

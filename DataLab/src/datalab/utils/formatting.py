@@ -28,10 +28,10 @@ def format_number(number, decimals=None):
     """
     if decimals is None:
         decimals = config.DECIMAL_PLACES
-    return f'{number:.{decimals}f}'
+    return f"{number:.{decimals}f}"
 
 
-def format_currency(amount, currency='SEK', decimals=0):
+def format_currency(amount, currency="SEK", decimals=0):
     """
     Format a number as currency.
 
@@ -55,8 +55,8 @@ def format_currency(amount, currency='SEK', decimals=0):
         '45,000.50 EUR'
     """
     # Format with thousand separators
-    formatted = f'{amount:,.{decimals}f}'
-    return f'{formatted} {currency}'
+    formatted = f"{amount:,.{decimals}f}"
+    return f"{formatted} {currency}"
 
 
 def format_percentage(value, total, decimals=1):
@@ -76,13 +76,13 @@ def format_percentage(value, total, decimals=1):
         '25.0%'
     """
     if total == 0:
-        return '0.0%'
+        return "0.0%"
 
     percentage = (value / total) * 100
-    return f'{percentage:.{decimals}f}%'
+    return f"{percentage:.{decimals}f}%"
 
 
-def format_list(items, separator=', ', final_separator=' and '):
+def format_list(items, separator=", ", final_separator=" and "):
     """
     Format a list as a human-readable string.
 
@@ -104,16 +104,20 @@ def format_list(items, separator=', ', final_separator=' and '):
         'apple, banana and orange'
     """
     if not items:
-        return ''
+        return ""
     if len(items) == 1:
         return str(items[0])
     if len(items) == 2:
-        return f'{items[0]}{final_separator}{items[1]}'
+        return f"{items[0]}{final_separator}{items[1]}"
 
-    return separator.join(str(item) for item in items[:-1]) + final_separator + str(items[-1])
+    return (
+        separator.join(str(item) for item in items[:-1])
+        + final_separator
+        + str(items[-1])
+    )
 
 
-def truncate_string(text, max_length=50, suffix='...'):
+def truncate_string(text, max_length=50, suffix="..."):
     """
     Truncate a string to maximum length.
 
@@ -131,7 +135,7 @@ def truncate_string(text, max_length=50, suffix='...'):
     """
     if len(text) <= max_length:
         return text
-    return text[:max_length - len(suffix)] + suffix
+    return text[: max_length - len(suffix)] + suffix
 
 
 def main():
@@ -157,7 +161,7 @@ def main():
     print("\n=== List Formatting ===")
     print(f"format_list(['apple', 'banana']): {format_list(['apple', 'banana'])}")
     print(f"format_list(['a', 'b', 'c']): {format_list(['a', 'b', 'c'])}")
-    cities = ['Stockholm', 'Göteborg', 'Malmö', 'Uppsala']
+    cities = ["Stockholm", "Göteborg", "Malmö", "Uppsala"]
     print(f"format_list(cities): {format_list(cities)}")
 
     print("\n=== String Truncation ===")
@@ -167,5 +171,5 @@ def main():
     print(f"Truncated (30): {truncate_string(long_text, 30)}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

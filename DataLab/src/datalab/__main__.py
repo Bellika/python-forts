@@ -9,5 +9,5 @@ It's a standard Python pattern for making packages executable.
 
 from datalab.main import run
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run()

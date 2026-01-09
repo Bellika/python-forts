@@ -10,21 +10,21 @@ Demonstrates:
 - Separation of data transformation and calculation logic
 """
 
-from datalab.analysis.processing import analyze_json_data, analyze_csv_data
+from datalab.analysis.processing import analyze_csv_data, analyze_json_data
 from datalab.analysis.statistics import (
     calculate_average,
     calculate_sum,
     count_by_field,
-    get_min_max
+    get_min_max,
 )
 
 __all__ = [
     # Processing functions
-    'analyze_json_data',
-    'analyze_csv_data',
+    "analyze_json_data",
+    "analyze_csv_data",
     # Statistical functions
-    'calculate_average',
-    'calculate_sum',
-    'count_by_field',
-    'get_min_max',
+    "calculate_average",
+    "calculate_sum",
+    "count_by_field",
+    "get_min_max",
 ]

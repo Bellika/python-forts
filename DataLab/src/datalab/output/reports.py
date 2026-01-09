@@ -12,12 +12,13 @@ Demonstrates:
 import datetime
 import time
 from pathlib import Path
+
 from datalab import config
 from datalab.utils import log
-from datalab.utils.formatting import format_number, format_currency, format_percentage
+from datalab.utils.formatting import format_currency, format_number, format_percentage
 
 
-def generate_timestamp(format_str='%Y-%m-%d %H:%M:%S'):
+def generate_timestamp(format_str="%Y-%m-%d %H:%M:%S"):
     """
     Generate a formatted timestamp.
 
@@ -111,10 +112,10 @@ def create_analysis_report(analysis_data, report_name="DataLab Analysis Report")
     lines.append("")
 
     # File info
-    if 'file' in analysis_data:
+    if "file" in analysis_data:
         lines.append(f"Data Source: {analysis_data['file']}")
 
-    if 'records' in analysis_data:
+    if "records" in analysis_data:
         lines.append(f"Total Records: {analysis_data['records']}")
 
     lines.append("")
@@ -123,26 +124,34 @@ def create_analysis_report(analysis_data, report_name="DataLab Analysis Report")
     lines.append("-" * 70)
 
     # Age statistics
-    if 'average_age' in analysis_data:
-        lines.append(f"Average Age: {format_number(analysis_data['average_age'], 1)} years")
+    if "average_age" in analysis_data:
+        lines.append(
+            f"Average Age: {format_number(analysis_data['average_age'], 1)} years"
+        )
 
     # Salary statistics
-    if 'average_salary' in analysis_data:
-        lines.append(f"Average Salary: {format_currency(analysis_data['average_salary'], 'SEK', 0)}")
+    if "average_salary" in analysis_data:
+        lines.append(
+            f"Average Salary: {format_currency(analysis_data['average_salary'], 'SEK', 0)}"
+        )
 
-    if 'salary_range' in analysis_data:
-        min_sal, max_sal = analysis_data['salary_range']
-        lines.append(f"Salary Range: {format_currency(min_sal, 'SEK', 0)} - {format_currency(max_sal, 'SEK', 0)}")
+    if "salary_range" in analysis_data:
+        min_sal, max_sal = analysis_data["salary_range"]
+        lines.append(
+            f"Salary Range: {format_currency(min_sal, 'SEK', 0)} - {format_currency(max_sal, 'SEK', 0)}"
+        )
 
     # City distribution
-    if 'city_distribution' in analysis_data:
+    if "city_distribution" in analysis_data:
         lines.append("")
         lines.append("-" * 70)
         lines.append(" City Distribution")
         lines.append("-" * 70)
 
-        total = analysis_data['records']
-        for city, count in sorted(analysis_data['city_distribution'].items(), key=lambda x: x[1], reverse=True):
+        total = analysis_data["records"]
+        for city, count in sorted(
+            analysis_data["city_distribution"].items(), key=lambda x: x[1], reverse=True
+        ):
             percentage = format_percentage(count, total)
             lines.append(f"  {city:.<20} {count:>5} ({percentage:>6})")
 
@@ -170,7 +179,7 @@ def save_report_to_file(report_content, filename=None, reports_dir=None):
     """
     # Setup reports directory
     if reports_dir is None:
-        reports_dir = config.PROJECT_ROOT / 'reports'
+        reports_dir = config.PROJECT_ROOT / "reports"
     else:
         reports_dir = Path(reports_dir)
 
@@ -179,13 +188,13 @@ def save_report_to_file(report_content, filename=None, reports_dir=None):
 
     # Generate filename with timestamp if not provided
     if filename is None:
-        timestamp = generate_timestamp('%Y%m%d_%H%M%S')
+        timestamp = generate_timestamp("%Y%m%d_%H%M%S")
         filename = f"report_{timestamp}.txt"
 
     filepath = reports_dir / filename
 
     # Write report to file
-    with open(filepath, 'w', encoding='utf-8') as f:
+    with open(filepath, "w", encoding="utf-8") as f:
         f.write(report_content)
 
     log(f"Report saved to: {filepath}")
@@ -233,7 +242,9 @@ def create_performance_summary(operations):
 
     for operation, duration in operations:
         percentage = format_percentage(duration, total_time)
-        lines.append(f"  {operation:.<40} {format_duration(duration):>10} ({percentage:>6})")
+        lines.append(
+            f"  {operation:.<40} {format_duration(duration):>10} ({percentage:>6})"
+        )
 
     lines.append("-" * 70)
     lines.append(f"  {'Total Time':.<40} {format_duration(total_time):>10}")
@@ -267,17 +278,17 @@ def main():
 
     print("\n=== Sample Report ===")
     sample_data = {
-        'file': 'people.csv',
-        'records': 7,
-        'average_age': 27.86,
-        'average_salary': 47714.29,
-        'salary_range': (38000, 55000),
-        'city_distribution': {
-            'Stockholm': 3,
-            'Gothenburg': 2,
-            'Malmö': 1,
-            'Uppsala': 1
-        }
+        "file": "people.csv",
+        "records": 7,
+        "average_age": 27.86,
+        "average_salary": 47714.29,
+        "salary_range": (38000, 55000),
+        "city_distribution": {
+            "Stockholm": 3,
+            "Gothenburg": 2,
+            "Malmö": 1,
+            "Uppsala": 1,
+        },
     }
 
     report = create_analysis_report(sample_data)
@@ -293,5 +304,5 @@ def main():
     print(perf_summary)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

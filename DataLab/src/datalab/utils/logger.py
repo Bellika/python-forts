@@ -13,8 +13,9 @@ This replaces simple print() with proper logging infrastructure.
 
 import logging
 import sys
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
+
 from datalab import config
 
 
@@ -33,7 +34,7 @@ def _setup_logger():
         Configured logger instance
     """
     # Create logger with specific name
-    logger = logging.getLogger('datalab')
+    logger = logging.getLogger("datalab")
     logger.setLevel(logging.DEBUG)  # Capture all levels
 
     # Prevent duplicate handlers if called multiple times
@@ -46,7 +47,7 @@ def _setup_logger():
     console_handler.setLevel(logging.INFO)  # Only INFO and above to console
 
     # Simple format for console (no timestamps, cleaner output)
-    console_format = logging.Formatter('[DataLab] %(message)s')
+    console_format = logging.Formatter("[DataLab] %(message)s")
     console_handler.setFormatter(console_format)
 
     logger.addHandler(console_handler)
@@ -55,20 +56,20 @@ def _setup_logger():
     # This writes to file - for debugging and audit trail
     try:
         # Create logs directory if needed
-        log_dir = config.PROJECT_ROOT / 'logs'
+        log_dir = config.PROJECT_ROOT / "logs"
         log_dir.mkdir(exist_ok=True)
 
         # Create log file with date in filename
         log_filename = f"datalab_{datetime.now().strftime('%Y%m%d')}.log"
         log_file = log_dir / log_filename
 
-        file_handler = logging.FileHandler(log_file, encoding='utf-8')
+        file_handler = logging.FileHandler(log_file, encoding="utf-8")
         file_handler.setLevel(logging.DEBUG)  # Everything to file
 
         # Detailed format for file (includes timestamps, level, line numbers)
         file_format = logging.Formatter(
-            '%(asctime)s - %(name)s - %(levelname)s - %(funcName)s:%(lineno)d - %(message)s',
-            datefmt='%Y-%m-%d %H:%M:%S'
+            "%(asctime)s - %(name)s - %(levelname)s - %(funcName)s:%(lineno)d - %(message)s",
+            datefmt="%Y-%m-%d %H:%M:%S",
         )
         file_handler.setFormatter(file_format)
 
@@ -86,6 +87,7 @@ _logger = _setup_logger()
 
 # === PUBLIC API FUNCTIONS ===
 # These provide a simple interface for other modules to use
+
 
 def log(msg):
     """
@@ -187,5 +189,5 @@ def main():
     print("=" * 60)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

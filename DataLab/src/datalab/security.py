@@ -11,18 +11,19 @@ Demonstrates common security vulnerabilities and how to prevent them:
 This module contains BOTH vulnerable and secure examples for teaching purposes.
 """
 
-import os
 import html
 import json
+import os
 import subprocess
 from pathlib import Path
+
 from datalab import config
 from datalab.utils import log, warning
-
 
 # ============================================================================
 # 1. PATH TRAVERSAL ATTACKS
 # ============================================================================
+
 
 def load_file_unsafe(filename):
     """
@@ -44,7 +45,7 @@ def load_file_unsafe(filename):
     filepath = f"data/{filename}"
 
     try:
-        with open(filepath, 'r') as f:
+        with open(filepath, "r") as f:
             return f.read()
     except Exception as e:
         return f"Error: {e}"
@@ -81,13 +82,14 @@ def load_file_safe(filename):
         raise FileNotFoundError(f"File not found: {filename}")
 
     # Safe to read
-    with open(requested_path, 'r') as f:
+    with open(requested_path, "r") as f:
         return f.read()
 
 
 # ============================================================================
 # 2. COMMAND INJECTION
 # ============================================================================
+
 
 def run_command_unsafe(user_input):
     """
@@ -135,10 +137,7 @@ def run_command_safe(filename):
 
     # Safe: Arguments passed as list, no shell interpretation
     result = subprocess.run(
-        ['wc', '-l', str(filepath)],
-        capture_output=True,
-        text=True,
-        timeout=5
+        ["wc", "-l", str(filepath)], capture_output=True, text=True, timeout=5
     )
 
     return result.stdout.strip()
@@ -147,6 +146,7 @@ def run_command_safe(filename):
 # ============================================================================
 # 3. EVAL/EXEC INJECTION
 # ============================================================================
+
 
 def filter_data_unsafe(data, filter_expression):
     """
@@ -193,12 +193,12 @@ def filter_data_safe(data, field, operator, value):
     """
     # Whitelist of allowed operators
     allowed_operators = {
-        '>': lambda a, b: a > b,
-        '<': lambda a, b: a < b,
-        '==': lambda a, b: a == b,
-        '!=': lambda a, b: a != b,
-        '>=': lambda a, b: a >= b,
-        '<=': lambda a, b: a <= b,
+        ">": lambda a, b: a > b,
+        "<": lambda a, b: a < b,
+        "==": lambda a, b: a == b,
+        "!=": lambda a, b: a != b,
+        ">=": lambda a, b: a >= b,
+        "<=": lambda a, b: a <= b,
     }
 
     if operator not in allowed_operators:
@@ -222,6 +222,7 @@ def filter_data_safe(data, field, operator, value):
 # ============================================================================
 # 4. XSS (Cross-Site Scripting) Prevention
 # ============================================================================
+
 
 def generate_html_report_unsafe(records):
     """
@@ -274,8 +275,8 @@ def generate_html_report_safe(records):
 
     for record in records:
         # Safe: HTML special characters are escaped
-        safe_name = html.escape(str(record.get('name', 'N/A')))
-        safe_age = html.escape(str(record.get('age', 'N/A')))
+        safe_name = html.escape(str(record.get("name", "N/A")))
+        safe_age = html.escape(str(record.get("age", "N/A")))
 
         html_output += f"<tr><td>{safe_name}</td>"
         html_output += f"<td>{safe_age}</td></tr>\n"
@@ -288,6 +289,7 @@ def generate_html_report_safe(records):
 # ============================================================================
 # 5. INPUT VALIDATION
 # ============================================================================
+
 
 def parse_json_unsafe(json_string):
     """
@@ -306,10 +308,10 @@ def parse_json_unsafe(json_string):
     data = json.loads(json_string)
 
     # Directly access fields without checking
-    return data['records']
+    return data["records"]
 
 
-def parse_json_safe(json_string, max_size=1024*1024):
+def parse_json_safe(json_string, max_size=1024 * 1024):
     """
     SECURE: Validates JSON structure and size.
 
@@ -343,30 +345,31 @@ def parse_json_safe(json_string, max_size=1024*1024):
     if not isinstance(data, dict):
         raise ValueError("JSON must be an object")
 
-    if 'records' not in data:
+    if "records" not in data:
         raise ValueError("JSON must contain 'records' field")
 
-    if not isinstance(data['records'], list):
+    if not isinstance(data["records"], list):
         raise ValueError("'records' must be a list")
 
     # Validate each record
-    for i, record in enumerate(data['records']):
+    for i, record in enumerate(data["records"]):
         if not isinstance(record, dict):
             raise ValueError(f"Record {i} must be an object")
 
         # Validate required fields
-        if 'name' in record and not isinstance(record['name'], str):
+        if "name" in record and not isinstance(record["name"], str):
             raise ValueError(f"Record {i}: 'name' must be a string")
 
-        if 'age' in record and not isinstance(record['age'], (int, float)):
+        if "age" in record and not isinstance(record["age"], (int, float)):
             raise ValueError(f"Record {i}: 'age' must be a number")
 
-    return data['records']
+    return data["records"]
 
 
 # ============================================================================
 # DEMONSTRATION FUNCTIONS
 # ============================================================================
+
 
 def demo_path_traversal():
     """Demonstrate path traversal vulnerability and fix."""
@@ -421,7 +424,7 @@ def demo_xss():
     malicious_records = [
         {"name": "Alice", "age": 25},
         {"name": "<script>alert('XSS')</script>", "age": 30},
-        {"name": "Bob", "age": 22}
+        {"name": "Bob", "age": 22},
     ]
 
     print("\n1. UNSAFE HTML (would execute script in browser):")
@@ -444,14 +447,14 @@ def demo_eval_injection():
     test_data = [
         {"name": "Alice", "age": 25},
         {"name": "Bob", "age": 30},
-        {"name": "Charlie", "age": 22}
+        {"name": "Charlie", "age": 22},
     ]
 
     print("\n1. SAFE: Using structured filtering")
     result = filter_data_safe(test_data, "age", ">", 24)
     print(f"Filtered records (age > 24): {result}")
 
-    print("\n2. UNSAFE eval() would allow: '__import__(\"os\").system(\"ls\")'")
+    print('\n2. UNSAFE eval() would allow: \'__import__("os").system("ls")\'')
     print("   (Not executing this for safety!)")
 
 
@@ -480,5 +483,5 @@ def main():
     print("=" * 60)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

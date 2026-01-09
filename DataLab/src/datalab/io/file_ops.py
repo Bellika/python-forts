@@ -9,10 +9,11 @@ Demonstrates:
 - File and directory management
 """
 
+import glob
 import os
 import shutil
-import glob
 from pathlib import Path
+
 from datalab import config
 from datalab.utils import log
 
@@ -39,7 +40,7 @@ def list_directory_contents(directory=None):
 
     if not directory.exists():
         log(f"Directory does not exist: {directory}")
-        return {'files': [], 'directories': []}
+        return {"files": [], "directories": []}
 
     files = []
     directories = []
@@ -52,10 +53,7 @@ def list_directory_contents(directory=None):
         elif full_path.is_dir():
             directories.append(item)
 
-    return {
-        'files': sorted(files),
-        'directories': sorted(directories)
-    }
+    return {"files": sorted(files), "directories": sorted(directories)}
 
 
 def get_file_info(filepath):
@@ -79,20 +77,20 @@ def get_file_info(filepath):
     filepath = Path(filepath)
 
     if not filepath.exists():
-        return {'exists': False}
+        return {"exists": False}
 
     # Get file stats
     stat_info = filepath.stat()
 
     return {
-        'exists': True,
-        'name': filepath.name,
-        'size_bytes': stat_info.st_size,
-        'size_kb': stat_info.st_size / 1024,
-        'modified': datetime.datetime.fromtimestamp(stat_info.st_mtime),
-        'is_file': filepath.is_file(),
-        'is_directory': filepath.is_dir(),
-        'extension': filepath.suffix,
+        "exists": True,
+        "name": filepath.name,
+        "size_bytes": stat_info.st_size,
+        "size_kb": stat_info.st_size / 1024,
+        "modified": datetime.datetime.fromtimestamp(stat_info.st_mtime),
+        "is_file": filepath.is_file(),
+        "is_directory": filepath.is_dir(),
+        "extension": filepath.suffix,
     }
 
 
@@ -151,8 +149,12 @@ def copy_file(source, destination, create_backup=True):
     # Create backup if destination exists
     if destination.exists() and create_backup:
         import datetime
-        timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
-        backup_path = destination.parent / f"{destination.stem}_backup_{timestamp}{destination.suffix}"
+
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        backup_path = (
+            destination.parent
+            / f"{destination.stem}_backup_{timestamp}{destination.suffix}"
+        )
         try:
             shutil.copy2(destination, backup_path)
             log(f"Created backup: {backup_path}")
@@ -194,7 +196,7 @@ def create_backup(file_path, backup_dir=None):
 
     # Setup backup directory
     if backup_dir is None:
-        backup_dir = config.PROJECT_ROOT / 'backups'
+        backup_dir = config.PROJECT_ROOT / "backups"
     else:
         backup_dir = Path(backup_dir)
 
@@ -204,7 +206,7 @@ def create_backup(file_path, backup_dir=None):
         raise IOError(f"Failed to create backup directory: {e}")
 
     # Create backup filename with timestamp
-    timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     backup_name = f"{file_path.stem}_backup_{timestamp}{file_path.suffix}"
     backup_path = backup_dir / backup_name
 
@@ -271,7 +273,7 @@ def cleanup_old_backups(backup_dir, keep_count=5):
 
     # Get all backup files sorted by modification time (newest first)
     backup_files = []
-    for file in backup_dir.glob('*_backup_*'):
+    for file in backup_dir.glob("*_backup_*"):
         if file.is_file():
             backup_files.append((file, file.stat().st_mtime))
 
@@ -318,8 +320,8 @@ def main():
     print(f"Directories: {contents['directories']}")
 
     print("\n=== File Information ===")
-    if contents['files']:
-        first_file = config.DATA_DIR / contents['files'][0]
+    if contents["files"]:
+        first_file = config.DATA_DIR / contents["files"][0]
         info = get_file_info(first_file)
         print(f"File: {info['name']}")
         print(f"Size: {info['size_kb']:.2f} KB")
@@ -327,10 +329,10 @@ def main():
         print(f"Extension: {info['extension']}")
 
     print("\n=== Find Files by Pattern ===")
-    json_files = find_files_by_pattern('*.json')
+    json_files = find_files_by_pattern("*.json")
     print(f"JSON files: {[Path(f).name for f in json_files]}")
 
-    csv_files = find_files_by_pattern('*.csv')
+    csv_files = find_files_by_pattern("*.csv")
     print(f"CSV files: {[Path(f).name for f in csv_files]}")
 
     print("\n=== Directory Size ===")
@@ -341,10 +343,10 @@ def main():
     print(f"Current working directory: {os.getcwd()}")
     print(f"Platform: {os.name}")
 
-    if os.name == 'posix':  # Linux/Mac
+    if os.name == "posix":  # Linux/Mac
         print(f"User: {os.environ.get('USER', 'unknown')}")
         print(f"Home: {os.environ.get('HOME', 'unknown')}")
-    elif os.name == 'nt':  # Windows
+    elif os.name == "nt":  # Windows
         print(f"User: {os.environ.get('USERNAME', 'unknown')}")
         print(f"Home: {os.environ.get('USERPROFILE', 'unknown')}")
 
@@ -354,5 +356,5 @@ def main():
     print("=" * 60)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

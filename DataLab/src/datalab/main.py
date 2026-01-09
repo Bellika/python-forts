@@ -8,10 +8,14 @@ Demonstrates:
 - Using new report and file operation features
 """
 
-from datalab.utils import log, info, warning
-from datalab.analysis.processing import analyze_json_data, analyze_csv_data
-from datalab.output.reports import create_analysis_report, save_report_to_file, timed_operation
+from datalab.analysis.processing import analyze_csv_data, analyze_json_data
 from datalab.io.file_ops import list_directory_contents
+from datalab.output.reports import (
+    create_analysis_report,
+    save_report_to_file,
+    timed_operation,
+)
+from datalab.utils import info, log, warning
 
 
 def run():
@@ -74,6 +78,6 @@ def run():
     log("Analysis complete! Check reports/ directory for detailed output.")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # This allows the module to be run directly for testing
     run()

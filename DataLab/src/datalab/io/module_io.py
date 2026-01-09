@@ -8,8 +8,9 @@ Demonstrates:
 - Module testing
 """
 
-import json
 import csv
+import json
+
 from datalab import config
 
 
@@ -23,7 +24,7 @@ def load_json(filepath):
     Returns:
         Parsed JSON data (usually dict or list)
     """
-    with open(filepath, 'r', encoding='utf-8') as f:
+    with open(filepath, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -35,7 +36,7 @@ def save_json(data, filepath):
         data: Data to save (must be JSON-serializable)
         filepath: Path to output file (str or Path)
     """
-    with open(filepath, 'w', encoding='utf-8') as f:
+    with open(filepath, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
 
 
@@ -52,7 +53,7 @@ def load_csv(filepath):
     Returns:
         List of dictionaries
     """
-    with open(filepath, 'r', encoding='utf-8') as f:
+    with open(filepath, "r", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         return list(reader)
 
@@ -72,7 +73,7 @@ def save_csv(data, filepath, fieldnames=None):
     if fieldnames is None:
         fieldnames = list(data[0].keys())
 
-    with open(filepath, 'w', encoding='utf-8', newline='') as f:
+    with open(filepath, "w", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(data)

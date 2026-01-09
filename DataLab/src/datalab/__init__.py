@@ -32,44 +32,49 @@ New in this version:
 """
 
 # Package metadata
-__version__ = '0.2.0'
+__version__ = "0.2.0"
+
+from datalab import config
+from datalab.analysis.processing import analyze_csv_data, analyze_json_data
+from datalab.analysis.statistics import calculate_average, calculate_sum, count_by_field
+from datalab.io.module_io import load_csv, load_json, save_csv, save_json
+from datalab.output.reports import (
+    create_analysis_report,
+    generate_timestamp,
+    save_report_to_file,
+)
 
 # Import key functions for easy access
 # This allows users to do: from datalab import log, analyze_csv_data
 # instead of: from datalab.utils import log; from datalab.processing import analyze_csv_data
 from datalab.utils import log
-from datalab.utils.formatting import format_number, format_currency, format_percentage
-from datalab.analysis.processing import analyze_json_data, analyze_csv_data
-from datalab.analysis.statistics import calculate_average, calculate_sum, count_by_field
-from datalab.io.module_io import load_json, save_json, load_csv, save_csv
-from datalab.output.reports import create_analysis_report, save_report_to_file, generate_timestamp
-from datalab import config
+from datalab.utils.formatting import format_currency, format_number, format_percentage
 
 # Define what gets exported with "from datalab import *"
 # (Though explicit imports are preferred!)
 __all__ = [
     # Utils - Logging
-    'log',
+    "log",
     # Utils - Formatting
-    'format_number',
-    'format_currency',
-    'format_percentage',
+    "format_number",
+    "format_currency",
+    "format_percentage",
     # Processing
-    'analyze_json_data',
-    'analyze_csv_data',
+    "analyze_json_data",
+    "analyze_csv_data",
     # I/O
-    'load_json',
-    'save_json',
-    'load_csv',
-    'save_csv',
+    "load_json",
+    "save_json",
+    "load_csv",
+    "save_csv",
     # Statistics
-    'calculate_average',
-    'calculate_sum',
-    'count_by_field',
+    "calculate_average",
+    "calculate_sum",
+    "count_by_field",
     # Reports
-    'create_analysis_report',
-    'save_report_to_file',
-    'generate_timestamp',
+    "create_analysis_report",
+    "save_report_to_file",
+    "generate_timestamp",
     # Config
-    'config',
+    "config",
 ]

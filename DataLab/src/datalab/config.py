@@ -11,14 +11,14 @@ from pathlib import Path
 # Using __file__ makes paths work regardless of where the script is run from
 PACKAGE_DIR = Path(__file__).parent  # Directory where this file lives
 PROJECT_ROOT = PACKAGE_DIR.parent.parent  # DataLab root
-DATA_DIR = PROJECT_ROOT / 'data'  # Data directory in project root
+DATA_DIR = PROJECT_ROOT / "data"  # Data directory in project root
 
 # === FILE DEFAULTS ===
-DEFAULT_JSON_FILE = 'data.json'
-DEFAULT_CSV_FILE = 'people.csv'
+DEFAULT_JSON_FILE = "data.json"
+DEFAULT_CSV_FILE = "people.csv"
 
 # === APPLICATION SETTINGS ===
-LOG_PREFIX = '[DataLab]'
+LOG_PREFIX = "[DataLab]"
 DECIMAL_PLACES = 2
 
 
@@ -55,5 +55,5 @@ def main():
     print("=" * 60)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
