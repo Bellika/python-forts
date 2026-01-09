@@ -1,5 +1,5 @@
 """
-DataLab - Data Analysis Laboratory
+DataLab - Data Analysis Laboratory!
 ===================================
 
 A teaching project demonstrating Python best practices and standard library usage.
