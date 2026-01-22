@@ -42,8 +42,6 @@ Youssef Susaeg
 
 Grupp 5 – Endast distans
 
-Nahuel Gonzalez
-
 Albin Abrahamsson
 
 Victoria Hart
@@ -81,3 +79,5 @@ Anton Hergefeldt
 David Fjellström
 
 Nicklas Skoglund
+
+Nahuel Gonzalez
