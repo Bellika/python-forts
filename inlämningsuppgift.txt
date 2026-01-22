@@ -1,0 +1,171 @@
+Gruppuppgift: Pythonprojekt
+Gruppstorlek: 4 personer
+ Redovisning:
+ Inlämning: kod + dokumentation via GitHub
+
+Uppgiftens syfte
+Syftet är att utveckla, strukturera och kvalitetssäkra ett större Python-projekt som motsvarar arbetsmetoder i professionell mjukvaruutveckling.
+ Projektet ska visa att studenterna behärskar avancerad Python, god projektstruktur, testning, versionshantering samt grundläggande CI/CD.
+Fokus ligger på:
+Skalbar och modulär kod
+
+
+Korrekt användning av standard- och tredjepartsbibliotek
+
+
+Säker och testbar kod
+
+
+Samarbete i Git/GitHub
+
+
+
+
+Teknisk struktur
+Projektet ska innehålla:
+Arkitektur & kod
+Minst 5 Python-moduler
+
+
+Tydlig mappstruktur (src/, tests/, data/ etc.)
+
+
+Minst 2 klasser som används aktivt
+
+
+Funktioner med tydligt ansvar
+Datavalidering av användarinput
+
+
+Standardbibliotek (minst 3)
+Exempel:
+pathlib
+
+
+json
+
+
+os
+
+
+datetime
+
+
+logging
+
+
+argparse
+
+
+Externa bibliotek (minst 2)
+Exempel:
+requests
+
+
+pandas
+
+
+seaborn / matplotlib
+
+
+Flask / FastAPI
+
+
+pydantic
+
+
+pytest
+
+
+
+3. Testning & kvalitet
+Minst 3 enhetstester
+
+
+PyTest ska användas
+
+
+Testerna ska kunna köras automatiskt
+
+
+Projektet ska vara körbart i virtuell miljö (venv)
+
+
+
+4. Git & samarbete
+Gemensamt GitHub-repo
+
+
+Alla medlemmar ska:
+
+
+Göra commits
+
+
+Arbeta i branches
+Arbetet på git ska följa regler som anges i Readme
+
+
+Minst en GitHub Action:
+
+
+Kör tester automatiskt vid push eller pull request
+
+
+
+Individuella krav
+Varje student ska i egen fil eller tydligt avgränsad modul visa:
+Variabler och avancerade datatyper
+
+
+Villkor och loopar
+
+
+Användning av minst ett standardbibliotek
+
+
+Bidrag som är funktionellt viktigt för projektet
+
+
+
+Dokumentation (README)
+README ska innehålla:
+Projektbeskrivning
+
+
+Installation (venv, requirements)
+
+
+Hur projektet körs
+
+
+Projektstruktur
+
+
+Testinstruktioner
+
+
+CI/CD-beskrivning
+
+
+Vem som gjort vad
+
+
+
+Individuell rapport (krav för VG)
+Varje student ska lämna in en kort teknisk rapport (1 sida max) som beskriver:
+Vad du har implementerat
+
+
+Varför du valde denna lösning
+
+
+Vilka tekniska beslut du tog
+
+
+Eventuella problem och hur de löstes
+
+
+Rapporten ska vara saklig, teknisk och kopplad till koden.
+
+

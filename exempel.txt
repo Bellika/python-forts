@@ -1,0 +1,208 @@
+Data- och analysfokuserade projekt
+1. Logganalys- och rapportverktyg
+
+Vad:
+Ett program som läser loggfiler (JSON/CSV), analyserar dem och genererar statistik och visualiseringar.
+
+Innehåller:
+
+Datahantering (filer, parsing)
+
+Datastrukturer (dict, set)
+
+Visualisering (seaborn/matplotlib)
+
+CLI med argparse
+
+Tester + CI
+
+Exempel:
+Analysera access-loggar, feltyper, svarstider per tidsintervall.
+
+2. Budget- eller ekonomianalys med historik
+
+Vad:
+Importera ekonomidata (CSV/JSON), kategorisera utgifter och visa trender över tid.
+
+Innehåller:
+
+Datainläsning
+
+Objektmodell (Transaction, Category)
+
+Visualisering
+
+Validering
+
+Testning
+
+3. Dataset-validerare
+
+Vad:
+Ett verktyg som kontrollerar om CSV/JSON-filer följer givna regler (saknade värden, fel datatyper).
+
+Innehåller:
+
+Datahantering
+
+Pydantic/datavalidering
+
+CLI-gränssnitt
+
+Tester och CI
+
+Webb & API-relaterade projekt
+4. REST-API för resurshantering
+
+Vad:
+API för att hantera t.ex. användare, uppgifter eller produkter.
+
+Innehåller:
+
+FastAPI eller Flask
+
+Inputvalidering
+
+JSON-hantering
+
+Enhetstester
+
+GitHub Actions
+
+5. API-klient + analys
+
+Vad:
+Hämtar data från ett öppet API (väder, börs, sport), sparar lokalt och analyserar resultatet.
+
+Innehåller:
+
+requests / async HTTP
+
+Datacache (JSON)
+
+Visualisering
+
+Felhantering
+
+Testning (mockade API-svar)
+
+6. Autentisering- och säkerhetsdemo
+
+Vad:
+Ett litet API eller system som visar:
+
+lösenordshashning
+
+inputvalidering
+
+OWASP-tänk
+
+Innehåller:
+
+Säker utveckling
+
+Tester
+
+Dokumentation
+
+Strukturerad kod
+
+CLI- och systemnära projekt
+7. Avancerat CLI-verktyg
+
+Vad:
+Ett kommandoradsverktyg med flera subkommandon.
+
+Exempel:
+tool import, tool analyze, tool report
+
+Innehåller:
+
+argparse
+
+Moduluppdelning
+
+Konfigurationsfil
+
+Tester + CI
+
+8. Filövervakare
+
+Vad:
+Ett program som övervakar mappar och reagerar på förändringar.
+
+Innehåller:
+
+os / pathlib
+
+Eventbaserad logik
+
+Logging
+
+Tester
+
+Asynkronitet & prestanda
+9. Parallell webbskrapare
+
+Vad:
+Hämtar data från många sidor samtidigt och lagrar resultatet.
+
+Innehåller:
+
+asyncio eller threading
+
+Datahantering
+
+Felhantering
+
+Testning
+
+10. Batch-process för stora datamängder
+
+Vad:
+Bearbetar stora filer parallellt (t.ex. flera CSV samtidigt).
+
+Innehåller:
+
+Multiprocessing
+
+Optimering
+
+Mätning av prestanda
+
+Tester
+
+Övervakning & automation
+11. Systemmonitor
+
+Vad:
+Samlar in CPU/memory-data och sparar historik.
+
+Innehåller:
+
+Tidsseriedata
+
+Visualisering
+
+Standardbibliotek
+
+Testning
+
+12. CI-vänligt kodkvalitetsverktyg
+
+Vad:
+Ett verktyg som kontrollerar:
+
+kodstruktur
+
+testtäckning
+
+filnamn
+
+Innehåller:
+
+Git-integration
+
+Automatisk körning i pipeline
+
+Rapportgenerering
